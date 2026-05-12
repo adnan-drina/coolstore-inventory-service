@@ -1,0 +1,55 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: coolstore-inventory-service
+  title: Coolstore Inventory Service
+  description: Quarkus inventory service for the From Vibe Coding to Agentic Engineering demo.
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/source-location: url:https://github.com/adnan-drina/coding-exercises
+    github.com/project-slug: adnan-drina/coding-exercises
+    rhoai3.redhat.com/current-repository: adnan-drina/coding-exercises
+    rhoai3.redhat.com/planned-repository: adnan-drina/coolstore-inventory-service
+    rhoai3.redhat.com/future-gitops-path: gitops/
+    rhoai3.redhat.com/future-tekton-path: tekton/
+    rhoai3.redhat.com/future-evidence-path: docs/evidence/
+    rhoai3.redhat.com/status: evidence-model-documented
+  tags:
+    - java
+    - quarkus
+    - inventory
+    - coolstore
+    - agentic-engineering
+  links:
+    - url: https://github.com/adnan-drina/coding-exercises
+      title: Current Source Repository
+      icon: github
+    - url: https://github.com/adnan-drina/coolstore-inventory-service
+      title: Planned Repository Rename
+      icon: github
+    - url: ./README.md
+      title: Service README
+      icon: docs
+    - url: ./docs/coolstore-inventory-service-repository-plan.md
+      title: Repository Plan
+      icon: docs
+    - url: ./docs/tasks/continue-readme-api-test-plan-alignment.md
+      title: Continue Alignment Task
+      icon: docs
+    - url: ./docs/tasks/opencode-reservation-endpoint.md
+      title: OpenCode Reservation Task
+      icon: docs
+    - url: ./docs/coolstore-inventory-service-repository-plan.md#iteration-4-app-local-gitops
+      title: Future GitOps Link Placeholder
+      icon: docs
+    - url: ./docs/coolstore-inventory-service-repository-plan.md#iteration-5-pipeline-and-supply-chain
+      title: Future Pipeline Placeholder
+      icon: docs
+    - url: ./docs/evidence/README.md
+      title: Supply-Chain Evidence Model
+      icon: docs
+spec:
+  type: service
+  lifecycle: experimental
+  owner: ai-modernization-team
+  system: coolstore

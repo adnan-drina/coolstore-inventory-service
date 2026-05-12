@@ -1,8 +1,103 @@
-# Coding Exercises — AI Code Assistant Demo
+# Coolstore Inventory Service - Planning Repository
 
-Coding exercises for the RHOAI3 Private AI Code Assistant demo. Use the **Continue** extension with a private NVIDIA Nemotron model served via Models-as-a-Service.
+This repository is the transition workspace for the planned `coolstore-inventory-service` application in the "From Vibe Coding to Agentic Engineering" demo.
 
-## Quick Start
+The repository currently still contains the original Python coding exercises for the RHOAI3 Private AI Code Assistant demo. Those exercises remain as legacy context until the Quarkus service scaffold exists.
+
+## Repository Direction
+
+This repository is the candidate repository to rename from `coding-exercises` to `coolstore-inventory-service` after the direction is accepted.
+
+The accepted first-demo shape is a single service repository. After the rename and scaffold, this repository should own Quarkus source, tests, Dev Spaces configuration, Continue/OpenCode configuration, Developer Hub metadata, service documentation, app-local GitOps state under `gitops/`, Tekton/OpenShift Pipelines assets under `tekton/`, and rollout, promotion, and rollback evidence.
+
+See [Coolstore Inventory Service Repository Plan](docs/coolstore-inventory-service-repository-plan.md) for the proposed iteration path.
+
+## Current Status
+
+Planning artifacts and the first Quarkus scaffold now exist for the repository reshape:
+
+- [Item 1 app repo identity analysis](docs/analysis/item-1-app-repo-identity-analysis.md)
+- [Project AI instructions placeholder](AGENTS.md)
+- [Developer Hub catalog placeholder](catalog-info.yaml)
+- [Continue README/API/test-plan alignment task](docs/tasks/continue-readme-api-test-plan-alignment.md)
+- [OpenCode reservation endpoint task](docs/tasks/opencode-reservation-endpoint.md)
+- [Item 2 Quarkus scaffold analysis](docs/analysis/item-2-quarkus-service-scaffold-analysis.md)
+- [Item 3 enterprise AI controls analysis](docs/analysis/item-3-enterprise-ai-controls-analysis.md)
+- [Item 4 Developer Hub metadata analysis](docs/analysis/item-4-developer-hub-metadata-analysis.md)
+- [Item 5 delivery assets analysis](docs/analysis/item-5-delivery-assets-analysis.md)
+- [Item 6 supply-chain evidence analysis](docs/analysis/item-6-supply-chain-evidence-analysis.md)
+- [Supply-chain evidence model](docs/evidence/README.md)
+
+The initial Quarkus source code and Maven build now exist. PostgreSQL runtime configuration, `gitops/`, and `tekton/` assets are still deferred to later items.
+Use [AGENTS.md](AGENTS.md) as the shared project rule file for AI-assisted work.
+The root [catalog-info.yaml](catalog-info.yaml) now identifies this repository as the `coolstore-inventory-service` Developer Hub component and marks pipeline, GitOps, and evidence links as future placeholders.
+The delivery asset analysis is complete, but no pipeline or GitOps files were added because the template source and OpenShift handoff path are not selected yet.
+The supply-chain evidence model is now documented under `docs/evidence/`, but image digest, SBOM, scan, signature, provenance, policy gate, promotion, and rollback evidence remain pending until the delivery path exists.
+
+## Planned Service Contract
+
+Service name:
+
+```text
+coolstore-inventory-service
+```
+
+Java package:
+
+```text
+com.redhat.coolstore.inventory
+```
+
+Initial API:
+
+```text
+GET /api/inventory
+GET /api/inventory/{itemId}
+GET /api/inventory/{itemId}/availability
+```
+
+First OpenCode feature task:
+
+```text
+POST /api/inventory/{itemId}/reservations
+```
+
+## Quarkus Quick Start
+
+The initial service uses Red Hat build of Quarkus `3.27.3.SP1-redhat-00002` with Java 21.
+
+Run tests:
+
+```bash
+./mvnw test
+```
+
+Package the application:
+
+```bash
+./mvnw package
+```
+
+Start dev mode:
+
+```bash
+./mvnw quarkus:dev
+```
+
+Check the initial API:
+
+```bash
+curl -f http://localhost:8080/api/inventory
+curl -f http://localhost:8080/api/inventory/329299
+curl -f http://localhost:8080/api/inventory/329299/availability
+curl -f http://localhost:8080/q/health
+```
+
+This scaffold intentionally uses in-memory inventory data. Do not claim PostgreSQL, OpenShift deployment, pipeline, or GitOps behavior until those later items are implemented.
+
+## Legacy Quick Start
+
+Current status: this quick start still describes the original Python coding-exercises workspace. Keep it as legacy context until the repository is renamed and reshaped into the Quarkus `coolstore-inventory-service` repository.
 
 1. Open this workspace in OpenShift Dev Spaces
 2. The Continue extension is recommended automatically (`.vscode/extensions.json`)
@@ -12,7 +107,7 @@ Coding exercises for the RHOAI3 Private AI Code Assistant demo. Use the **Contin
    - Replace `YOUR_API_KEY` with your API token from the RHOAI dashboard
 5. Select **Local Config** in the Continue sidebar dropdown
 
-## Exercises
+## Legacy Python Exercises
 
 Three game exercises in `coding-exercises/game_starters/`:
 
@@ -24,7 +119,9 @@ Three game exercises in `coding-exercises/game_starters/`:
 
 Solutions are in `coding-exercises/game_solutions/`.
 
-## Getting Your MaaS Endpoint and API Key
+The Python exercises should be archived under `legacy/python-exercises/` only after the Quarkus scaffold exists.
+
+## Getting Your MaaS Endpoint And API Key
 
 1. Log in to the RHOAI Dashboard
 2. Go to **GenAI Studio > AI asset endpoints**
@@ -35,12 +132,16 @@ Solutions are in `coding-exercises/game_solutions/`.
 ## References
 
 - [MaaS Code Assistant Quickstart](https://docs.redhat.com/en/learn/ai-quickstarts/rh-maas-code-assistant)
+- [A guide to AI code assistants with Red Hat OpenShift Dev Spaces](https://developers.redhat.com/articles/2026/01/28/guide-ai-code-assistants-red-hat-openshift-dev-spaces)
+- [OpenCode: Model-neutral AI coding assistant for OpenShift Dev Spaces](https://developers.redhat.com/articles/2026/04/22/opencode-model-neutral-ai-coding-assistant-openshift-dev-spaces)
 - [Continue — Open-Source AI Code Assistant](https://www.continue.dev/)
 - [RHOAI3 Coding Demo](https://github.com/adnan-drina/rhoai3-coding-demo)
 
-## Using OpenCode (Terminal-based AI Assistant)
+## Using OpenCode
 
-OpenCode is a model-neutral CLI tool installed automatically in the workspace. Use it for terminal-based AI tasks:
+OpenCode is a model-neutral CLI tool installed automatically in the workspace. The first planned implementation task is documented in [OpenCode reservation endpoint task](docs/tasks/opencode-reservation-endpoint.md). It should run only after the Continue alignment pass has completed and the OpenCode plan has been reviewed.
+
+Before using OpenCode for implementation, review [AGENTS.md](AGENTS.md) and the task packet. The repo-local OpenCode config points at `AGENTS.md` and requires approval for write-like tools.
 
 ```bash
 # Launch OpenCode
@@ -51,10 +152,11 @@ opencode
 # Enter your MaaS endpoint and API key
 ```
 
-OpenCode is great for:
+OpenCode will be used later for:
+
 - Reviewing git diffs and commit history
 - Analyzing project structure
-- Multi-file refactoring from the terminal
-- Code generation and scaffolding
+- Planning bounded Java/Quarkus changes
+- Implementing the reviewed reservation endpoint task
 
 See [OpenCode documentation](https://github.com/anomalyco/opencode) for more details.

@@ -1,3 +1,7 @@
 .che/
 *.pyc
 __pycache__/
+target/
+.flattened-pom.xml
+.mvn/wrapper/maven-wrapper.jar
+.DS_Store
