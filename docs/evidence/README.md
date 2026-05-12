@@ -2,7 +2,7 @@
 
 This directory defines the first evidence model for the planned `coolstore-inventory-service` image.
 
-Current status: documentation-only. The service has a Quarkus scaffold and local Maven validation, but it does not yet have a selected image build pipeline, image registry, SBOM generator, scanner, signing path, provenance attestation, GitOps handoff, or deployment policy gate.
+Current status: static delivery packet. The service has a Quarkus scaffold, local Maven validation, a selected `.tekton/` Pipelines-as-Code image-build path, an app-local `Containerfile`, an OpenShift internal registry target, and app-local GitOps manifests. It does not yet have a live PipelineRun, immutable image digest, SBOM generator output, scanner result, signing path, provenance attestation, Argo CD registration, rollout evidence, or deployment policy gate.
 
 ## Evidence Scope
 
@@ -25,9 +25,9 @@ The first trusted service-image bundle should capture:
 
 | Evidence | Current status | Planned control |
 | --- | --- | --- |
-| Source revision | Pending commit selection | Git commit SHA and branch |
-| Build result | Local Maven package only | OpenShift Pipelines or approved Tekton task |
-| Image reference and digest | Not created | Approved registry, likely Quay or OpenShift image registry |
+| Source revision | Pending delivery commit selection | Git commit SHA and branch |
+| Build result | Local Maven package only; PaC path drafted | OpenShift Pipelines PipelineRun |
+| Image reference and digest | Registry/repository selected; digest pending | OpenShift internal registry for first demo, immutable digest after PipelineRun |
 | SBOM | Not generated | Pipeline-generated CycloneDX or SPDX document |
 | Vulnerability scan | Not generated | Red Hat Trusted Profile Analyzer, Red Hat Quay, or Red Hat Advanced Cluster Security |
 | Signature | Not generated | Red Hat Trusted Artifact Signer or approved Sigstore-compatible path |

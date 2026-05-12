@@ -41,7 +41,7 @@ If the human approves edits after the analysis:
 - test-plan edits may touch `docs/` or focused test files under `src/test/java/com/redhat/coolstore/inventory/`;
 - source edits under `src/main/java/` require a separate implementation task.
 
-Do not edit `.mvn/`, `pom.xml`, `.opencode/`, `.vscode/`, legacy Python exercise directories, `gitops/`, or `tekton/` for this task.
+Do not edit `.mvn/`, `pom.xml`, `.opencode/`, `.vscode/`, legacy Python exercise directories, `gitops/`, or `.tekton/` for this task.
 
 ## Preferred Model Path
 

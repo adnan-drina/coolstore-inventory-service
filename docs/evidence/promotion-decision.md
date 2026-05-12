@@ -6,7 +6,7 @@ Decision target:
 coolstore-inventory-service application image
 ```
 
-Current status: deferred. No service image, app-local GitOps state, or deployment policy gate exists yet.
+Current status: deferred. Static app-local GitOps state and a Pipelines-as-Code image-build path exist, but no live service image digest, rollout, or deployment policy gate exists yet.
 
 ## Candidate Artifact
 
@@ -33,7 +33,7 @@ Current status: deferred. No service image, app-local GitOps state, or deploymen
 | Image signature verified | Pending | Pending |
 | Provenance verified | Pending | Pending |
 | Policy gate result reviewed | Pending | Pending |
-| GitOps target revision selected | Pending | Pending |
+| GitOps target revision selected | Pending | `gitops/overlays/dev` exists; no live registration yet |
 | Rollback path identified | Pending | Pending |
 
 ## Decision
@@ -41,7 +41,7 @@ Current status: deferred. No service image, app-local GitOps state, or deploymen
 | Field | Value |
 | --- | --- |
 | Promotion decision | Deferred |
-| Target environment | Pending |
+| Target environment | `coolstore-inventory-dev`, pending live validation |
 | Decision owner | Pending |
 | Date | Pending |
 | Conditions or exceptions | Pending |

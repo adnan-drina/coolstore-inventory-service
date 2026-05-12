@@ -8,7 +8,7 @@ The repository currently still contains the original Python coding exercises for
 
 This repository is the candidate repository to rename from `coding-exercises` to `coolstore-inventory-service` after the direction is accepted.
 
-The accepted first-demo shape is a single service repository. After the rename and scaffold, this repository should own Quarkus source, tests, Dev Spaces configuration, Continue/OpenCode configuration, Developer Hub metadata, service documentation, app-local GitOps state under `gitops/`, Tekton/OpenShift Pipelines assets under `tekton/`, and rollout, promotion, and rollback evidence.
+The accepted first-demo shape is a single service repository. After the rename and scaffold, this repository should own Quarkus source, tests, Dev Spaces configuration, Continue/OpenCode configuration, Developer Hub metadata, service documentation, app-local GitOps state under `gitops/`, Pipelines-as-Code assets under `.tekton/`, and rollout, promotion, and rollback evidence.
 
 See [Coolstore Inventory Service Repository Plan](docs/coolstore-inventory-service-repository-plan.md) for the proposed iteration path.
 
@@ -26,13 +26,15 @@ Planning artifacts and the first Quarkus scaffold now exist for the repository r
 - [Item 4 Developer Hub metadata analysis](docs/analysis/item-4-developer-hub-metadata-analysis.md)
 - [Item 5 delivery assets analysis](docs/analysis/item-5-delivery-assets-analysis.md)
 - [Item 6 supply-chain evidence analysis](docs/analysis/item-6-supply-chain-evidence-analysis.md)
+- [Delivery decision: Pipelines-as-Code with app-local GitOps](docs/delivery/0001-pipelines-as-code-app-local-gitops.md)
+- [Pipelines-as-Code setup notes](docs/delivery/pipelines-as-code-setup.md)
 - [Supply-chain evidence model](docs/evidence/README.md)
 
-The initial Quarkus source code and Maven build now exist. PostgreSQL runtime configuration, `gitops/`, and `tekton/` assets are still deferred to later items.
+The initial Quarkus source code, Maven build, app-local `gitops/` manifests, `.tekton/` Pipelines-as-Code pull-request PipelineRun, and `Containerfile` now exist. PostgreSQL runtime configuration, live PipelineRun evidence, and live GitOps registration are still deferred to later items.
 Use [AGENTS.md](AGENTS.md) as the shared project rule file for AI-assisted work.
-The root [catalog-info.yaml](catalog-info.yaml) now identifies this repository as the `coolstore-inventory-service` Developer Hub component and marks pipeline, GitOps, and evidence links as future placeholders.
-The delivery asset analysis is complete, but no pipeline or GitOps files were added because the template source and OpenShift handoff path are not selected yet.
-The supply-chain evidence model is now documented under `docs/evidence/`, but image digest, SBOM, scan, signature, provenance, policy gate, promotion, and rollback evidence remain pending until the delivery path exists.
+The root [catalog-info.yaml](catalog-info.yaml) now identifies this repository as the `coolstore-inventory-service` Developer Hub component and links to the concrete `.tekton/`, `gitops/`, delivery, and evidence paths.
+The delivery asset analysis is complete, and the selected first delivery path is Pipelines-as-Code with app-local GitOps. The current demo cluster still needs OpenShift Pipelines/Pipelines-as-Code prerequisites before live PaC validation.
+The supply-chain evidence model is now documented under `docs/evidence/`, but image digest, SBOM, scan, signature, provenance, policy gate, promotion, and rollback evidence remain pending until a real PipelineRun exists.
 
 ## Planned Service Contract
 
@@ -93,7 +95,37 @@ curl -f http://localhost:8080/api/inventory/329299/availability
 curl -f http://localhost:8080/q/health
 ```
 
-This scaffold intentionally uses in-memory inventory data. Do not claim PostgreSQL, OpenShift deployment, pipeline, or GitOps behavior until those later items are implemented.
+This scaffold intentionally uses in-memory inventory data. The repository now has static pipeline and app-local GitOps assets, but do not claim PostgreSQL, live OpenShift deployment, live PipelineRun, or live GitOps reconciliation behavior until those later items are implemented and validated.
+
+## Delivery Asset Quick Start
+
+The first delivery slice is reviewable locally. It does not install OpenShift Pipelines, create a Pipelines-as-Code `Repository` custom resource, register an Argo CD application, or deploy to a cluster.
+
+Build the Quarkus fast-jar output used by the `Containerfile`:
+
+```bash
+./mvnw -B test package
+```
+
+Render app-local GitOps state:
+
+```bash
+oc kustomize gitops/overlays/dev
+```
+
+The first pull-request pipeline is:
+
+```text
+.tekton/pull-request.yaml
+```
+
+It is triggered by pull requests to `main`, runs `./mvnw -B test package`, builds the image with Buildah, and pushes to the OpenShift internal registry repository:
+
+```text
+image-registry.openshift-image-registry.svc:5000/coolstore-inventory-dev/coolstore-inventory-service:<revision>
+```
+
+The pipeline intentionally does not deploy the service in this slice. See [Pipelines-as-Code setup notes](docs/delivery/pipelines-as-code-setup.md) for live cluster prerequisites.
 
 ## Legacy Quick Start
 

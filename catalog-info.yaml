@@ -10,10 +10,11 @@ metadata:
     github.com/project-slug: adnan-drina/coding-exercises
     rhoai3.redhat.com/current-repository: adnan-drina/coding-exercises
     rhoai3.redhat.com/planned-repository: adnan-drina/coolstore-inventory-service
-    rhoai3.redhat.com/future-gitops-path: gitops/
-    rhoai3.redhat.com/future-tekton-path: tekton/
-    rhoai3.redhat.com/future-evidence-path: docs/evidence/
-    rhoai3.redhat.com/status: evidence-model-documented
+    rhoai3.redhat.com/gitops-path: gitops/overlays/dev
+    rhoai3.redhat.com/pipelines-as-code-path: .tekton/pull-request.yaml
+    rhoai3.redhat.com/evidence-path: docs/evidence/
+    rhoai3.redhat.com/delivery-decision: docs/delivery/0001-pipelines-as-code-app-local-gitops.md
+    rhoai3.redhat.com/status: delivery-assets-drafted
   tags:
     - java
     - quarkus
@@ -39,11 +40,17 @@ metadata:
     - url: ./docs/tasks/opencode-reservation-endpoint.md
       title: OpenCode Reservation Task
       icon: docs
-    - url: ./docs/coolstore-inventory-service-repository-plan.md#iteration-4-app-local-gitops
-      title: Future GitOps Link Placeholder
+    - url: ./gitops/overlays/dev
+      title: App-Local GitOps Dev Overlay
       icon: docs
-    - url: ./docs/coolstore-inventory-service-repository-plan.md#iteration-5-pipeline-and-supply-chain
-      title: Future Pipeline Placeholder
+    - url: ./.tekton/pull-request.yaml
+      title: Pipelines-as-Code Pull Request Pipeline
+      icon: docs
+    - url: ./docs/delivery/0001-pipelines-as-code-app-local-gitops.md
+      title: Delivery Decision Record
+      icon: docs
+    - url: ./docs/delivery/pipelines-as-code-setup.md
+      title: Pipelines-as-Code Setup Notes
       icon: docs
     - url: ./docs/evidence/README.md
       title: Supply-Chain Evidence Model

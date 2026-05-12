@@ -6,7 +6,7 @@ Artifact:
 coolstore-inventory-service application image
 ```
 
-Current status: pending image pipeline. This record defines the evidence that must be captured when the first image build exists.
+Current status: static image pipeline drafted. This record defines the evidence that must be captured when the first live Pipelines-as-Code image build exists.
 
 ## Source
 
@@ -14,7 +14,7 @@ Current status: pending image pipeline. This record defines the evidence that mu
 | --- | --- |
 | Repository | `adnan-drina/coding-exercises` today; planned rename to `adnan-drina/coolstore-inventory-service` |
 | Branch | `feature/coolstore-inventory-service-plan` |
-| Commit SHA | Pending |
+| Commit SHA | Pending delivery asset commit |
 | Human reviewer | Pending |
 | AI assistance disclosed | Pending PR summary |
 
@@ -25,22 +25,22 @@ Current status: pending image pipeline. This record defines the evidence that mu
 | Current local build command | `./mvnw package` |
 | Current local test command | `./mvnw test` |
 | Current local build status | Passed during Item 2 scaffold validation |
-| Pipeline build command | Pending Item 5 delivery decision |
+| Pipeline build command | `.tekton/pull-request.yaml` runs `./mvnw -B test package`, then Buildah |
 | Pipeline run ID or URL | Pending |
-| Builder image | Pending |
-| Build service account | Pending |
-| Build namespace | Pending |
+| Builder image | `registry.access.redhat.com/ubi9/openjdk-21:1.23` for test/package; Buildah task image resolved by OpenShift Pipelines |
+| Build service account | `pipeline` in `coolstore-inventory-dev`, pending live namespace validation |
+| Build namespace | `coolstore-inventory-dev`, pending live namespace validation |
 
 ## Artifact
 
 | Field | Value |
 | --- | --- |
-| Image registry | Pending |
-| Image repository | Pending |
-| Image tag | Pending |
+| Image registry | `image-registry.openshift-image-registry.svc:5000` |
+| Image repository | `coolstore-inventory-dev/coolstore-inventory-service` |
+| Image tag | Pipeline revision tag from Pipelines-as-Code `{{ revision }}` |
 | Image digest | Pending |
-| Base image | Pending |
-| Containerfile or build strategy | Pending |
+| Base image | `registry.access.redhat.com/ubi9/openjdk-21-runtime:1.23` |
+| Containerfile or build strategy | App-local `Containerfile` built by Buildah |
 
 ## SBOM
 
@@ -83,7 +83,7 @@ Current status: pending image pipeline. This record defines the evidence that mu
 | Field | Value |
 | --- | --- |
 | Gate status | Deferred |
-| Gate type | Pending, choose advisory or blocking in the delivery design |
+| Gate type | Pending, choose advisory or blocking after first live PipelineRun |
 | Gate owner | Pending |
 | Required checks | Pending |
 | Exception record | Pending |

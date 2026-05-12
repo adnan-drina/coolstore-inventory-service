@@ -57,7 +57,7 @@ Human approval is required before changing:
 
 Disallowed for this task:
 
-- creating `gitops/` or `tekton/`;
+- creating or editing `gitops/` or `.tekton/`;
 - adding PostgreSQL, messaging, checkout, cart, payment, frontend, or OpenShift deployment behavior;
 - editing or moving legacy Python exercise directories;
 - hard-coding private cluster details or credentials.
@@ -84,7 +84,7 @@ Return:
 ## Guardrails
 
 - Keep edits in application source, tests, and service documentation unless explicitly approved.
-- Do not add `gitops/`, `tekton/`, or cluster manifests for this task.
+- Do not add or edit `gitops/`, `.tekton/`, or cluster manifests for this task.
 - Do not add external dependencies unless the reason is documented and reviewed.
 - Do not hard-code credentials, inventory data that belongs in a secured store, or private cluster details.
 - Do not claim PostgreSQL or OpenShift deployment behavior unless it exists in the repo.

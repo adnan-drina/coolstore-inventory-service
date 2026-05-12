@@ -2,7 +2,7 @@
 
 ## Scope
 
-Assess whether this branch is ready to add app-local delivery assets under `tekton/` and `gitops/`. The implementation plan requires a chosen Tekton/OpenShift Pipelines template and an approved OpenShift deployment handoff path before those assets are created.
+Assess whether this branch is ready to add app-local delivery assets under `.tekton/` and `gitops/`. The implementation plan requires a chosen Tekton/OpenShift Pipelines template and an approved OpenShift deployment handoff path before those assets are created.
 
 ## Sources Reviewed
 
@@ -37,26 +37,34 @@ Assess whether this branch is ready to add app-local delivery assets under `tekt
 
 ## Implementation Decision
 
-Do not create `tekton/`, `.tekton/`, or `gitops/` assets in this item.
+Original implementation decision: do not create `tekton/`, `.tekton/`, or `gitops/` assets until the delivery decisions are locked.
 
-The next implementation needs a short delivery decision record first:
+Resolution in the delivery path slice:
 
-- choose `tekton/` versus `.tekton/` and whether Pipelines as Code is in scope for the first demo;
-- choose the template source, such as Red Hat Developer Hub software-template output, a project-local golden-path packet, or an approved OpenShift Pipelines example;
-- choose the OpenShift deployment handoff path: app-local GitOps manifests, Quarkus OpenShift extension output, S2I/import-from-git, or another reviewed path;
-- define placeholder names for namespace, image repository, service account, route, PostgreSQL binding, and secret references;
-- define static validation commands before live cluster execution.
+- use `.tekton/` Pipelines-as-Code for the first pull-request pipeline;
+- use a project-local golden-path packet as the template source;
+- use an app-local `Containerfile` and Buildah for the image build;
+- push to the OpenShift internal registry repository `coolstore-inventory-dev/coolstore-inventory-service`;
+- use app-local Kustomize state under `gitops/base` and `gitops/overlays/dev`;
+- do not register an Argo CD application or deploy from the pipeline yet;
+- defer PostgreSQL and secret references;
+- validate statically before live cluster execution.
 
 ## Risks
 
 - Creating pipeline or GitOps YAML before these decisions would likely encode assumptions that the demo then has to undo.
-- A `.tekton/` Pipelines as Code path and a `tekton/` repository path have different operational meanings.
+- A `.tekton/` Pipelines-as-Code path requires OpenShift Pipelines and Pipelines-as-Code prerequisites in the target namespace before live validation.
 - Delivery assets will become security-sensitive as soon as they reference registries, credentials, namespaces, or deployment authority.
 
 ## Expected File Changes
 
-- `docs/analysis/item-5-delivery-assets-analysis.md`
+- `Containerfile`
+- `.tekton/pull-request.yaml`
+- `gitops/base/*`
+- `gitops/overlays/dev/*`
+- `docs/delivery/*`
+- `docs/evidence/*`
 - `README.md`
+- `AGENTS.md`
+- `catalog-info.yaml`
 - `docs/coolstore-inventory-service-repository-plan.md`
-
-No delivery asset directories should be created by this item.

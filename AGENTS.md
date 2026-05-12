@@ -8,7 +8,7 @@ Treat this repository as a transition repository until the service rename and fi
 
 - keep the existing Python exercises in place;
 - do not move files into `legacy/python-exercises/` unless the archive item explicitly starts;
-- do not add `gitops/` or `tekton/` assets until the delivery items start;
+- keep delivery assets bounded to `.tekton/`, `Containerfile`, `gitops/`, and `docs/delivery/` until the next delivery item starts;
 - keep the current Quarkus scaffold bounded to inventory read APIs until the reservation endpoint task starts;
 - do not commit secrets, model API keys, kubeconfigs, tokens, or private cluster credentials.
 
@@ -22,6 +22,10 @@ Important paths:
 - `src/main/java/com/redhat/coolstore/inventory/` - Quarkus inventory source.
 - `src/test/java/com/redhat/coolstore/inventory/` - Quarkus inventory tests.
 - `docs/coolstore-inventory-service-repository-plan.md` - staged implementation plan.
+- `docs/delivery/` - delivery decision record and Pipelines-as-Code setup notes.
+- `Containerfile` - Buildah image build input for the Quarkus fast-jar output.
+- `.tekton/` - Pipelines-as-Code pull-request PipelineRun.
+- `gitops/` - app-local Kustomize desired state for the first dev deployment.
 - `docs/tasks/` - bounded Continue and OpenCode task packets.
 - `.vscode/config.yaml` - Continue configuration template.
 - `.opencode/opencode.json` - OpenCode configuration template.
@@ -82,7 +86,7 @@ For all AI-assisted work:
 - Read freely from `README.md`, `AGENTS.md`, `pom.xml`, `.mvn/`, `src/`, `docs/`, `.vscode/`, `.opencode/`, and `devfile.yaml` when relevant to the task.
 - Do not edit generated build output under `target/`.
 - Do not edit or move legacy Python exercise directories unless the archive item explicitly starts.
-- Do not create `gitops/` or `tekton/` until the delivery items explicitly start.
+- Do not create additional live deployment, rollout, or promotion assets outside `.tekton/`, `Containerfile`, `gitops/`, and `docs/delivery/` unless the next delivery item explicitly starts.
 - Do not change `.mvn/`, `pom.xml`, or dependency versions unless the task explicitly requires a build or dependency decision.
 - Do not add external services, database runtime dependencies, container build assets, or OpenShift manifests unless the current item calls for them.
 - Keep documentation claims tied to implemented code, tests, or clearly marked future plans.
@@ -92,7 +96,7 @@ Task-specific write boundaries:
 - Continue alignment task: read-first; approved writes may touch `README.md`, `docs/`, and focused tests only.
 - OpenCode reservation endpoint task: approved writes may touch `src/main/java/com/redhat/coolstore/inventory/`, `src/test/java/com/redhat/coolstore/inventory/`, `README.md`, and `docs/tasks/opencode-reservation-endpoint.md`.
 - Developer Hub metadata task: approved writes may touch `catalog-info.yaml` and docs only.
-- Delivery tasks: approved writes may create `gitops/` and `tekton/` only after their analysis gates complete.
+- Delivery tasks: approved writes may touch `.tekton/`, `Containerfile`, `gitops/`, `docs/delivery/`, `docs/evidence/`, `README.md`, `AGENTS.md`, and `catalog-info.yaml` after their analysis gates complete.
 
 ## Required Workflow
 
@@ -119,3 +123,11 @@ Quarkus validation:
 ./mvnw test
 ./mvnw package
 ```
+
+Delivery validation:
+
+```bash
+oc kustomize gitops/overlays/dev
+```
+
+Run `tkn pac resolve .tekton/pull-request.yaml` only when OpenShift Pipelines, Pipelines-as-Code, and `tkn` are installed.

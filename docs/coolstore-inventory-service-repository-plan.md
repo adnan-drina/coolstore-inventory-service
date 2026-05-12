@@ -9,7 +9,7 @@ The accepted first-demo shape is a single service repository:
 - this repository should be renamed to `coolstore-inventory-service` after the direction is accepted;
 - Quarkus source lives at the repository root;
 - app-local GitOps desired state lives under `gitops/`;
-- Tekton or OpenShift Pipelines assets live under `tekton/`;
+- Pipelines-as-Code assets live under `.tekton/`;
 - rollout, promotion, and rollback evidence lives in repository documentation.
 
 ## Current Repository Assessment
@@ -35,8 +35,8 @@ What exists after Item 2:
 
 What does not exist yet:
 
-- pipeline definitions;
-- OpenShift or GitOps manifests.
+- live PipelineRun results;
+- live OpenShift deployment evidence.
 
 What exists as planning placeholders after Item 1:
 
@@ -48,6 +48,8 @@ What exists as planning placeholders after Item 1:
 - `docs/analysis/item-4-developer-hub-metadata-analysis.md`;
 - `docs/analysis/item-5-delivery-assets-analysis.md`;
 - `docs/analysis/item-6-supply-chain-evidence-analysis.md`;
+- `docs/delivery/0001-pipelines-as-code-app-local-gitops.md`;
+- `docs/delivery/pipelines-as-code-setup.md`;
 - `docs/evidence/README.md`;
 - `docs/evidence/service-image-evidence.md`;
 - `docs/evidence/promotion-decision.md`;
@@ -66,7 +68,7 @@ The renamed service repository should own:
 - Developer Hub catalog metadata for the application component;
 - local validation commands;
 - app-local GitOps desired state under `gitops/`;
-- Tekton or OpenShift Pipelines assets under `tekton/`;
+- Pipelines-as-Code assets under `.tekton/`;
 - rollout, promotion, and rollback evidence;
 - references to approved pipeline templates.
 
@@ -123,7 +125,7 @@ The service should keep the first implementation bounded to inventory availabili
 │   └── coolstore-inventory-service-repository-plan.md
 ├── gitops/
 │   ├── base/
-│   └── overlays/
+│   └── overlays/dev/
 ├── pom.xml
 ├── src/
 │   ├── main/
@@ -131,7 +133,8 @@ The service should keep the first implementation bounded to inventory availabili
 │   │   └── resources/
 │   └── test/
 │       └── java/com/redhat/coolstore/inventory/
-├── tekton/
+├── .tekton/
+│   └── pull-request.yaml
 ├── .opencode/
 │   └── opencode.json
 └── .vscode/
@@ -180,37 +183,40 @@ The existing Python exercise material should be archived under `legacy/python-ex
 - Refine `catalog-info.yaml` as the `coolstore-inventory-service` Component entity. Done in Item 4.
 - Align the component owner with the Stage 090 `ai-modernization-team` group. Done in Item 4.
 - Add source, README, repository plan, Continue task, and OpenCode task links. Done in Item 4.
-- Add future placeholders for app-local GitOps, Tekton, and evidence links without creating those assets. Done in Item 4.
+- Add initial placeholders for app-local GitOps, Pipelines-as-Code, and evidence links without creating those assets. Done in Item 4; replaced with static repository links in the delivery path slice.
 - Defer TechDocs build configuration until documentation structure is selected. Done in Item 4.
 
 ### Iteration 4: App-Local GitOps
 
-- Do not create app-local GitOps or Tekton assets until the delivery template and OpenShift handoff path are selected. Confirmed in Item 5.
-- Add app-local GitOps base and overlays under `gitops/`.
-- Add the OpenShift GitOps or Argo CD application resource only when the live path is selected.
-- Define image update, rollback, and promotion evidence.
+- Use `.tekton/` Pipelines-as-Code for the first pull-request pipeline. Done in the delivery path slice.
+- Use `gitops/base` and `gitops/overlays/dev` for app-local OpenShift desired state. Done in the delivery path slice.
+- Use namespace `coolstore-inventory-dev` and app, service, route, runtime service account, and image repository name `coolstore-inventory-service`. Done in the delivery path slice.
+- Keep the first GitOps state static and unregistered with Argo CD until the live platform path is selected. Done in the delivery path slice.
 - Keep live secrets and private environment data out of git.
 
 ### Iteration 5: Pipeline And Supply Chain
 
-- Add or reference approved Tekton or OpenShift Pipelines templates.
-- Run tests before image build.
-- Add SBOM, signature, provenance, scan, and policy evidence hooks.
-- Surface repository, pipeline, app-local GitOps, rollout, promotion, rollback, and runtime links through Developer Hub.
+- Add `.tekton/pull-request.yaml` as the first Pipelines-as-Code PipelineRun. Done in the delivery path slice.
+- Run `./mvnw -B test package` before image build. Done in the delivery path slice.
+- Use Buildah with the app-local `Containerfile` and push to the OpenShift internal registry. Done in the delivery path slice.
+- Defer SBOM, signature, provenance, scan, policy gates, rollout, promotion, rollback, and runtime evidence until a real PipelineRun exists.
+- Surface repository, pipeline, app-local GitOps, delivery, and evidence links through Developer Hub metadata. Done for static links in the delivery path slice.
 
 Item 6 added a documentation-only evidence model under `docs/evidence/`:
 
 - the first evidence scope is the future `coolstore-inventory-service` application image;
 - local Maven build and test commands are recorded as current pre-image evidence;
 - image digest, SBOM, vulnerability scan, signature, provenance, policy gate, promotion, and rollback fields are explicitly pending;
-- no generated SBOM, image build, signature, pipeline YAML, GitOps manifests, or policy engine configuration was added.
+- no generated SBOM, signature, provenance, scan result, policy engine configuration, live PipelineRun, or live deployment evidence was added.
 
-Item 5 delivery analysis deferred asset creation until these decisions are made:
+Item 5 delivery analysis is now resolved for the first static delivery packet:
 
-- `tekton/` versus `.tekton/` and whether Pipelines as Code is in scope;
-- approved template source;
-- OpenShift deployment handoff path;
-- placeholder names for namespace, image repository, service account, route, PostgreSQL binding, and secret references.
+- `.tekton/` Pipelines-as-Code is selected for the first pipeline;
+- the first template source is this project-local golden-path packet;
+- the first OpenShift deployment handoff is app-local GitOps under `gitops/`, not a registered Argo CD application;
+- namespace `coolstore-inventory-dev` and name `coolstore-inventory-service` are selected;
+- PostgreSQL binding and secret references are deferred;
+- OpenShift Pipelines and Pipelines-as-Code remain prerequisites, not application-owned platform installs.
 
 ## Validation Targets
 
@@ -231,13 +237,16 @@ curl -f http://localhost:8080/q/health
 curl -f http://localhost:8080/api/inventory
 ```
 
-Future app-local GitOps validation belongs under this repository's `gitops/` path.
+Current app-local GitOps validation:
+
+```bash
+oc kustomize gitops/overlays/dev
+```
 
 ## Open Decisions
 
 - Which downstream Dev Spaces, Developer Hub, and README links must be updated after the GitHub repository rename?
-- Which exact directory names should hold rollout notes, promotion notes, and rollback evidence?
-- Which approved Tekton or OpenShift Pipelines template should seed `tekton/`?
+- Which exact directory names should hold rollout notes beyond `docs/evidence/`, promotion notes, and rollback evidence?
 - Which concrete OpenShift Developer Catalog / Red Hat PostgreSQL image parameters should the first live deployment use?
 - Which supply-chain controls are advisory for the first demo, and which must block promotion?
 - Which registry and scanner should provide the first immutable image digest and vulnerability evidence?

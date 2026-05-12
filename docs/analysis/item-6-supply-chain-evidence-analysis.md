@@ -2,7 +2,7 @@
 
 ## Scope
 
-Define the first evidence model for the `coolstore-inventory-service` image and promotion decision. This item is documentation-only because the delivery template, image build path, registry, GitOps handoff, and policy enforcement mechanism are not selected yet.
+Define the first evidence model for the `coolstore-inventory-service` image and promotion decision. This item was originally documentation-only because the delivery template, image build path, registry, GitOps handoff, and policy enforcement mechanism were not selected yet. The delivery path slice has now selected `.tekton/`, Buildah, the OpenShift internal registry, and app-local GitOps, while live PipelineRun evidence and policy controls remain pending.
 
 ## Sources Reviewed
 
@@ -36,7 +36,7 @@ Define the first evidence model for the `coolstore-inventory-service` image and 
 - Red Hat Trusted Artifact Signer provides the signing and provenance lane. It is the correct future control for image signatures and attestation verification, but this repository should not create signing configuration before the pipeline and keyless or key-backed signing path are selected.
 - Red Hat Trusted Profile Analyzer provides the SBOM, VEX, CVE, vulnerability, and dependency analysis lane. The first repository artifact should reserve space for SBOM and vulnerability results without claiming they exist.
 - Red Hat OpenShift Pipelines 1.20 documentation covers Tekton Chains, signed pipeline run badges, SBOM visibility, and RHACS-backed project vulnerability display. Those controls depend on pipeline configuration and cannot be implemented in this item.
-- Red Hat Quay and Red Hat Advanced Cluster Security are the expected future registry and image scanning controls. The repository does not yet have an image build, image digest, registry namespace, or scan result.
+- Red Hat Quay and Red Hat Advanced Cluster Security are expected future registry and image scanning controls. The first demo now uses the OpenShift internal registry as the sandbox image target, but the repository still does not have a live image digest or scan result.
 - rh-brain AI workload notes extend the same evidence model to MCP servers, model containers, skills, and agent containers. For this item, only the service image is in scope; AI artifacts are listed as future extension points.
 
 ## Implementation Decision
@@ -47,7 +47,7 @@ Add docs-only evidence records under `docs/evidence/`:
 - `service-image-evidence.md` to capture build, image, SBOM, scan, signature, provenance, and policy evidence for the service image;
 - `promotion-decision.md` to capture the first promotion decision, rollback reference, and human review.
 
-No image build, SBOM generation, signing configuration, pipeline YAML, GitOps manifests, or policy engine configuration should be added in this item.
+No SBOM generation, signing configuration, scan result, policy engine configuration, live PipelineRun evidence, or live deployment evidence should be claimed until those artifacts exist.
 
 ## Risks
 
@@ -66,4 +66,4 @@ No image build, SBOM generation, signing configuration, pipeline YAML, GitOps ma
 - `docs/coolstore-inventory-service-repository-plan.md`
 - `catalog-info.yaml`
 
-This item should not create `gitops/`, `tekton/`, `.tekton/`, container build assets, generated SBOMs, or executable deployment artifacts.
+The later delivery path slice created `.tekton/`, `gitops/`, and `Containerfile` assets. This evidence item still should not create generated SBOMs, scan results, signatures, provenance attestations, policy gates, or executable deployment evidence without a real PipelineRun.

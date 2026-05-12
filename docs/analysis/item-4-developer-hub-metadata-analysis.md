@@ -2,7 +2,7 @@
 
 ## Scope
 
-Refine the app repository `catalog-info.yaml` so Red Hat Developer Hub can represent `coolstore-inventory-service` as the target service component for the developer workflow demo. This item does not add Developer Hub platform manifests, software templates, TechDocs build configuration, GitOps assets, or pipeline assets.
+Refine the app repository `catalog-info.yaml` so Red Hat Developer Hub can represent `coolstore-inventory-service` as the target service component for the developer workflow demo. This item did not add Developer Hub platform manifests, software templates, TechDocs build configuration, GitOps assets, or pipeline assets. The later delivery path slice now links the component to the static `.tekton/`, `gitops/`, delivery, and evidence paths.
 
 ## Sources Reviewed
 
@@ -47,13 +47,13 @@ Keep a single `Component` entity for now and make it more explicit:
 - keep `spec.system: coolstore` and `spec.lifecycle: experimental`;
 - add source repository annotations for the current repo and the planned rename;
 - keep `backstage.io/techdocs-ref: dir:.` as a future-facing docs hook, but do not claim TechDocs is built yet;
-- add links to README, repository plan, Continue task, OpenCode task, source repo, and future GitOps/Tekton evidence placeholders.
+- add links to README, repository plan, Continue task, OpenCode task, source repo, and GitOps, Pipelines-as-Code, delivery, and evidence paths as they become available.
 
 ## Risks
 
 - The planned `adnan-drina/coolstore-inventory-service` repository does not exist until the rename is performed, so the current repository remains the active source annotation.
 - TechDocs should be validated in Developer Hub only after a reviewed `mkdocs.yml` or equivalent TechDocs configuration is added.
-- Pipeline, GitOps, rollout, promotion, and rollback links are placeholders until Items 5 and 6 create those assets.
+- Pipeline and GitOps links now point to static repository assets. Rollout, promotion, rollback, and live evidence links remain placeholders until a real PipelineRun and deployment exist.
 
 ## Expected File Changes
 
