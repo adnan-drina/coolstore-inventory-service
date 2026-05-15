@@ -13,9 +13,9 @@ Define the first evidence model for the `coolstore-inventory-service` image and 
   - `docs/coolstore-inventory-service-repository-plan.md`
   - `docs/analysis/item-5-delivery-assets-analysis.md`
 - Platform planning repository:
-  - `docs/developer-workflow/155-red-hat-trusted-software-supply-chain.md`
-  - `docs/developer-workflow/150-governed-pipeline-and-deployment.md`
-  - `docs/developer-workflow/140-golden-path-quarkus-service.md`
+  - `stages/155-red-hat-trusted-software-supply-chain/README.md`
+  - `stages/150-governed-pipeline-and-deployment/README.md`
+  - `stages/140-golden-path-quarkus-service/README.md`
 - rh-brain reference material:
   - `raw/Using containers to bring software engineering rigor to AI workloads.md`
   - `raw/How Red Hat OpenShift AI simplifies trust and compliance.md`

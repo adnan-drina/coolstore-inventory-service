@@ -11,8 +11,8 @@ Add the first working `coolstore-inventory-service` Quarkus scaffold at the repo
   - `AGENTS.md`
   - `docs/coolstore-inventory-service-repository-plan.md`
 - Platform planning repository:
-  - `docs/developer-workflow/quarkus-target-service-options.md`
-  - `docs/developer-workflow/140-golden-path-quarkus-service.md`
+  - `stages/140-golden-path-quarkus-service/quarkus-target-service-options.md`
+  - `stages/140-golden-path-quarkus-service/README.md`
 - rh-brain reference material:
   - `raw/Red Hat build of Quarkus Kubernetes-native Java.md`
   - `raw/What is Quarkus?.md`

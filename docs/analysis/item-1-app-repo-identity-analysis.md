@@ -13,10 +13,10 @@ Prepare this repository as the future `coolstore-inventory-service` application 
   - `.vscode/config.yaml`
   - `.opencode/opencode.json`
 - Platform planning repository:
-  - `docs/developer-workflow/coding-exercises-app-repo-plan.md`
-  - `docs/developer-workflow/100-governed-developer-entry-point.md`
-  - `docs/developer-workflow/110-enterprise-vibe-coding-with-continue.md`
-  - `docs/developer-workflow/130-agentic-engineering-with-opencode.md`
+  - `stages/140-golden-path-quarkus-service/coding-exercises-app-repo-plan.md`
+  - `stages/100-governed-developer-entry-point/README.md`
+  - `stages/110-enterprise-vibe-coding-with-continue/README.md`
+  - `stages/130-agentic-engineering-with-opencode/README.md`
 - rh-brain reference material:
   - `wiki/demos/rhoai3-coding-demo Developer Workflow Extension.md`
   - `raw/OpenCode A model-neutral AI coding assistant for OpenShift Dev Spaces.md`

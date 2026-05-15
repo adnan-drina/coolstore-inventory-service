@@ -18,9 +18,9 @@ Turn the transition guardrails from Items 1 and 2 into concrete repo-local contr
   - `AGENTS.md`
   - `docs/AI_COLLABORATION.md`
   - `docs/DEVELOPER_WORKSPACE_GUIDE.md`
-  - `docs/developer-workflow/130-agentic-engineering-with-opencode.md`
-  - `docs/developer-workflow/140-golden-path-quarkus-service.md`
-  - `docs/developer-workflow/quarkus-target-service-options.md`
+  - `stages/130-agentic-engineering-with-opencode/README.md`
+  - `stages/140-golden-path-quarkus-service/README.md`
+  - `stages/140-golden-path-quarkus-service/quarkus-target-service-options.md`
 - rh-brain reference material:
   - `wiki/demos/rhoai3-coding-demo Developer Workflow Extension.md`
   - `raw/OpenCode A model-neutral AI coding assistant for OpenShift Dev Spaces.md`

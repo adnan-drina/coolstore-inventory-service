@@ -15,9 +15,9 @@ Refine the app repository `catalog-info.yaml` so Red Hat Developer Hub can repre
   - `stages/090-developer-portal-self-service/README.md`
   - `gitops/stages/090-developer-portal-self-service/base/catalog/all.yaml`
   - `gitops/stages/090-developer-portal-self-service/base/rhdh-instance/app-config-configmap.yaml`
-  - `docs/developer-workflow/100-governed-developer-entry-point.md`
-  - `docs/developer-workflow/140-golden-path-quarkus-service.md`
-  - `docs/developer-workflow/coding-exercises-app-repo-plan.md`
+  - `stages/100-governed-developer-entry-point/README.md`
+  - `stages/140-golden-path-quarkus-service/README.md`
+  - `stages/140-golden-path-quarkus-service/coding-exercises-app-repo-plan.md`
 - rh-brain reference material:
   - `wiki/demos/rhoai3-coding-demo Developer Workflow Extension.md`
   - `raw/rhoai3-coding-demo.cursor at main.md`
