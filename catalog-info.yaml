@@ -23,37 +23,13 @@ metadata:
     - agentic-engineering
   links:
     - url: https://github.com/adnan-drina/coding-exercises
-      title: Current Source Repository
+      title: Source Repo
       icon: github
-    - url: https://github.com/adnan-drina/coolstore-inventory-service
-      title: Planned Repository Rename
-      icon: github
-    - url: ./README.md
-      title: Service README
+    - url: https://devspaces.placeholder.example.com
+      title: Dev Spaces
       icon: docs
-    - url: ./docs/coolstore-inventory-service-repository-plan.md
-      title: Repository Plan
-      icon: docs
-    - url: ./docs/tasks/continue-readme-api-test-plan-alignment.md
-      title: Continue Alignment Task
-      icon: docs
-    - url: ./docs/tasks/opencode-reservation-endpoint.md
-      title: OpenCode Reservation Task
-      icon: docs
-    - url: ./gitops/overlays/dev
-      title: App-Local GitOps Dev Overlay
-      icon: docs
-    - url: ./.tekton/pull-request.yaml
-      title: Pipelines-as-Code Pull Request Pipeline
-      icon: docs
-    - url: ./docs/delivery/0001-pipelines-as-code-app-local-gitops.md
-      title: Delivery Decision Record
-      icon: docs
-    - url: ./docs/delivery/pipelines-as-code-setup.md
-      title: Pipelines-as-Code Setup Notes
-      icon: docs
-    - url: ./docs/evidence/README.md
-      title: Supply-Chain Evidence Model
+    - url: ./docs/getting-started.md
+      title: Getting Started
       icon: docs
 spec:
   type: service

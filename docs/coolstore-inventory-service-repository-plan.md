@@ -66,6 +66,7 @@ The renamed service repository should own:
 - Continue and OpenCode workspace configuration templates;
 - Dev Spaces workspace definition;
 - Developer Hub catalog metadata for the application component;
+- a deliberately small Developer Hub link card with source repository, Dev Spaces, and one getting-started document;
 - local validation commands;
 - app-local GitOps desired state under `gitops/`;
 - Pipelines-as-Code assets under `.tekton/`;
@@ -182,8 +183,8 @@ The existing Python exercise material should be archived under `legacy/python-ex
 
 - Refine `catalog-info.yaml` as the `coolstore-inventory-service` Component entity. Done in Item 4.
 - Align the component owner with the Stage 090 `ai-modernization-team` group. Done in Item 4.
-- Add source, README, repository plan, Continue task, and OpenCode task links. Done in Item 4.
-- Add initial placeholders for app-local GitOps, Pipelines-as-Code, and evidence links without creating those assets. Done in Item 4; replaced with static repository links in the delivery path slice.
+- Keep visible Developer Hub component links limited to `Source Repo`, `Dev Spaces`, and `Getting Started`.
+- Keep README, repository plan, Continue, OpenCode, pipeline, GitOps, delivery, and evidence paths discoverable from repository documentation rather than crowding the first Developer Hub component card.
 - Defer TechDocs build configuration until documentation structure is selected. Done in Item 4.
 
 ### Iteration 4: App-Local GitOps
