@@ -19,7 +19,7 @@ The current repository is the target application repository for the first demo.
 What exists now:
 
 - OpenShift Dev Spaces `devfile.yaml`;
-- Continue configuration template in `.vscode/config.yaml`;
+- Continue configuration template in `.continue/config.yaml`;
 - OpenCode configuration template in `.opencode/opencode.json`;
 - archived Python starter exercises under `legacy/python-exercises/game_starters/`;
 - archived Python solution examples under `legacy/python-exercises/game_solutions/`.

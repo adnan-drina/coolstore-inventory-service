@@ -9,7 +9,7 @@ Turn the transition guardrails from Items 1 and 2 into concrete repo-local contr
 - Local app repository:
   - `AGENTS.md`
   - `README.md`
-  - `.vscode/config.yaml`
+  - `.continue/config.yaml`
   - `.opencode/opencode.json`
   - `devfile.yaml`
   - `docs/tasks/continue-readme-api-test-plan-alignment.md`

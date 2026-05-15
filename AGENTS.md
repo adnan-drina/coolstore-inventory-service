@@ -27,7 +27,7 @@ Important paths:
 - `.tekton/` - Pipelines-as-Code pull-request PipelineRun.
 - `gitops/` - app-local Kustomize desired state for the first dev deployment.
 - `docs/tasks/` - bounded Continue and OpenCode task packets.
-- `.vscode/config.yaml` - Continue configuration template.
+- `.continue/config.yaml` - Continue configuration template.
 - `.opencode/opencode.json` - OpenCode configuration template.
 - `legacy/python-exercises/` - archived Python exercise material retained as legacy context.
 

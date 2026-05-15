@@ -18,7 +18,7 @@ commands:
     exec:
       commandLine: |
         mkdir -p ~/.continue ~/.opencode
-        cp /projects/coolstore-inventory-service/.vscode/config.yaml ~/.continue/config.yaml
+        cp /projects/coolstore-inventory-service/.continue/config.yaml ~/.continue/config.yaml
         cp /projects/coolstore-inventory-service/.opencode/opencode.json ~/.opencode/opencode.json
         echo ""
         echo "=== AI Code Assistant Setup ==="

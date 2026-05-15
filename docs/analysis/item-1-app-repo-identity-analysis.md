@@ -10,7 +10,7 @@ Prepare this repository as the future `coolstore-inventory-service` application 
   - `README.md`
   - `docs/coolstore-inventory-service-repository-plan.md`
   - `devfile.yaml`
-  - `.vscode/config.yaml`
+  - `.continue/config.yaml`
   - `.opencode/opencode.json`
 - Platform planning repository:
   - `stages/140-golden-path-quarkus-service/coolstore-inventory-service-app-repo-plan.md`

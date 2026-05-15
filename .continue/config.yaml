@@ -2,7 +2,6 @@ name: MaaS Code Assistant
 version: 1.0.0
 schema: v1
 models:
-  # Local GPU models (private, on-cluster)
   - name: NVIDIA Nemotron 3 Nano 30B-A3B
     provider: openai
     model: "nemotron-3-nano-30b-a3b"
@@ -24,7 +23,6 @@ models:
     defaultCompletionOptions:
       maxTokens: 4096
 
-  # External OpenAI models (via MaaS Gateway — credential injection handles OpenAI auth)
   - name: OpenAI GPT-4o
     provider: openai
     model: "gpt-4o"
