@@ -34,6 +34,7 @@ Planning artifacts and the first Quarkus scaffold now exist:
 The initial Quarkus source code, Maven build, app-local `gitops/` manifests, `.tekton/` Pipelines-as-Code pull-request PipelineRun, and `Containerfile` now exist. PostgreSQL runtime configuration, live PipelineRun evidence, and live GitOps registration are still deferred to later items.
 Use [AGENTS.md](AGENTS.md) as the shared project rule file for AI-assisted work.
 The root [catalog-info.yaml](catalog-info.yaml) now identifies this repository as the `coolstore-inventory-service` Developer Hub component. Its visible link card is intentionally limited to `Source Repo`, `Dev Spaces`, and `Getting Started`; detailed `.tekton/`, `gitops/`, delivery, task, and evidence paths stay in repository documentation.
+The canonical workspace setup guide is published from the platform repository through Developer Hub TechDocs. Use the Developer Hub `Getting Started` link for the step-by-step MaaS, Continue, and OpenCode setup flow.
 The delivery asset analysis is complete, and the selected first delivery path is Pipelines-as-Code with app-local GitOps. The current demo cluster still needs OpenShift Pipelines/Pipelines-as-Code prerequisites before live PaC validation.
 The supply-chain evidence model is now documented under `docs/evidence/`, but image digest, SBOM, scan, signature, provenance, policy gate, promotion, and rollback evidence remain pending until a real PipelineRun exists.
 

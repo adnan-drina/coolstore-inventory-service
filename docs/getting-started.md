@@ -1,7 +1,8 @@
 # Getting Started
 
-This page is the single Developer Hub getting-started document for the
-`coolstore-inventory-service` Stage 100 entry point.
+This page is the app-local companion for the `coolstore-inventory-service`
+Stage 100 entry point. The canonical step-by-step workspace setup guide is
+published from `rhoai3-coding-demo` through Developer Hub TechDocs.
 
 ## Start From Developer Hub
 
@@ -10,10 +11,11 @@ Hub. The component link card should stay intentionally small:
 
 - `Source Repo` opens the current source repository.
 - `Dev Spaces` opens the governed workspace path for this demo environment.
-- `Getting Started` opens this document.
+- `Getting Started` opens the Developer Hub TechDocs workspace guide.
 
 Detailed planning, delivery, task, and evidence documents remain in this
 repository, but they should not crowd the first Developer Hub component view.
+Use this app-local page after the TechDocs guide has opened the workspace.
 
 ## Open The Workspace
 
@@ -42,10 +44,12 @@ Before moving to Stage 110, confirm:
 
 - Developer Hub shows the `Coolstore Inventory Service` component.
 - The component exposes only `Source Repo`, `Dev Spaces`, and `Getting Started`.
+- `Getting Started` opens the TechDocs workspace guide.
 - The Dev Spaces workspace opens.
 - The workspace contains `mca-coolstore` and `coolstore-inventory-service`.
 - `./mvnw test` passes in this repository.
 - The private MaaS model path is selected for source-code context.
+- Continue and OpenCode both pass a harmless MaaS verification prompt.
 
 ## Next Task
 

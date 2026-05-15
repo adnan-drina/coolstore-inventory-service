@@ -5,7 +5,7 @@ metadata:
   title: Coolstore Inventory Service
   description: Quarkus inventory service for the From Vibe Coding to Agentic Engineering demo.
   annotations:
-    backstage.io/techdocs-ref: dir:.
+    backstage.io/techdocs-ref: url:https://github.com/adnan-drina/rhoai3-coding-demo/tree/feature/vibe-agentic-workflow-readmes
     backstage.io/source-location: url:https://github.com/adnan-drina/coolstore-inventory-service
     github.com/project-slug: adnan-drina/coolstore-inventory-service
     rhoai3.redhat.com/current-repository: adnan-drina/coolstore-inventory-service
@@ -13,6 +13,7 @@ metadata:
     rhoai3.redhat.com/gitops-path: gitops/overlays/dev
     rhoai3.redhat.com/pipelines-as-code-path: .tekton/pull-request.yaml
     rhoai3.redhat.com/evidence-path: docs/evidence/
+    rhoai3.redhat.com/techdocs-source: adnan-drina/rhoai3-coding-demo
     rhoai3.redhat.com/delivery-decision: docs/delivery/0001-pipelines-as-code-app-local-gitops.md
     rhoai3.redhat.com/status: delivery-assets-drafted
   tags:
@@ -28,7 +29,7 @@ metadata:
     - url: https://devspaces.placeholder.example.com
       title: Dev Spaces
       icon: docs
-    - url: ./docs/getting-started.md
+    - url: /docs/default/component/coolstore-inventory-service
       title: Getting Started
       icon: docs
 spec:
