@@ -11,7 +11,7 @@ Prepare this repository as the future `coolstore-inventory-service` application 
   - `docs/coolstore-inventory-service-repository-plan.md`
   - `devfile.yaml`
   - `.continue/config.yaml`
-  - `.opencode/opencode.json`
+  - `.opencode/opencode.template.json`
 - Platform planning repository:
   - `stages/140-golden-path-quarkus-service/coolstore-inventory-service-app-repo-plan.md`
   - `stages/100-governed-developer-entry-point/README.md`

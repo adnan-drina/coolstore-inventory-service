@@ -17,21 +17,43 @@ commands:
   - id: copy-ai-configs
     exec:
       commandLine: |
-        mkdir -p ~/.continue ~/.opencode
-        cp /projects/coolstore-inventory-service/.continue/config.yaml ~/.continue/config.yaml
-        cp /projects/coolstore-inventory-service/.opencode/opencode.json ~/.opencode/opencode.json
+        mkdir -p ~/.continue ~/.config/opencode ~/.opencode
+        if [ ! -f ~/.continue/config.yaml ]; then
+          cp /projects/coolstore-inventory-service/.continue/config.yaml ~/.continue/config.yaml
+          echo "Created ~/.continue/config.yaml from the repo template."
+        else
+          echo "Kept existing ~/.continue/config.yaml."
+        fi
+        if [ ! -f ~/.config/opencode/opencode.json ]; then
+          if [ -f ~/.opencode/opencode.json ]; then
+            cp ~/.opencode/opencode.json ~/.config/opencode/opencode.json
+            echo "Migrated existing ~/.opencode/opencode.json to ~/.config/opencode/opencode.json."
+          else
+            cp /projects/coolstore-inventory-service/.opencode/opencode.template.json ~/.config/opencode/opencode.json
+            echo "Created ~/.config/opencode/opencode.json from the repo template."
+          fi
+        else
+          echo "Kept existing ~/.config/opencode/opencode.json."
+        fi
+        if [ ! -e ~/.opencode/opencode.json ]; then
+          ln -s ~/.config/opencode/opencode.json ~/.opencode/opencode.json 2>/dev/null || cp ~/.config/opencode/opencode.json ~/.opencode/opencode.json
+          echo "Created compatibility ~/.opencode/opencode.json for the installed OpenCode build."
+        else
+          echo "Kept existing compatibility ~/.opencode/opencode.json."
+        fi
         echo ""
         echo "=== AI Code Assistant Setup ==="
         echo ""
-        echo "Continue and OpenCode configs copied."
+        echo "Continue and OpenCode local configs are ready."
         echo ""
-        echo "To configure, replace placeholders in both files:"
+        echo "To configure, replace placeholders only in the local home-directory files:"
         echo "  1. Get your MaaS route and API key from the RHOAI dashboard"
         echo "     (Gen AI Studio > AI asset endpoints > Models as a service)"
         echo "  2. Edit ~/.continue/config.yaml"
         echo "     - Replace YOUR_MAAS_ROUTE with: https://maas.<cluster-domain>"
         echo "     - Replace YOUR_API_KEY with your generated API key"
-        echo "  3. Edit ~/.opencode/opencode.json (same placeholders)"
+        echo "  3. Edit ~/.config/opencode/opencode.json (same placeholders)"
+        echo "     - ~/.opencode/opencode.json is kept as a compatibility path"
         echo ""
         echo "Available models (4):"
         echo "  nemotron-3-nano-30b-a3b  (local GPU, recommended for coding)"

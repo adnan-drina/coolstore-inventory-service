@@ -10,7 +10,7 @@ Turn the transition guardrails from Items 1 and 2 into concrete repo-local contr
   - `AGENTS.md`
   - `README.md`
   - `.continue/config.yaml`
-  - `.opencode/opencode.json`
+  - `.opencode/opencode.template.json`
   - `devfile.yaml`
   - `docs/tasks/continue-readme-api-test-plan-alignment.md`
   - `docs/tasks/opencode-reservation-endpoint.md`
@@ -48,7 +48,7 @@ Strengthen the repository controls in place:
 - expand `AGENTS.md` from a transition note into the current project rules for AI-assisted work;
 - make the Continue task explicitly read-only by default and limit any approved writes to docs and tests;
 - make the OpenCode reservation task explicit about allowed read paths, allowed write paths, dependency boundaries, and validation;
-- update `.opencode/opencode.json` with a schema, `AGENTS.md` instruction reference, and approval-required permissions for write-like or external-action tools;
+- update `.opencode/opencode.template.json` with a schema, OpenAI-compatible MaaS providers, and approval-required permissions for write-like or external-action tools;
 - update the README and repository plan to point developers at the strengthened controls.
 
 ## Risks
@@ -61,7 +61,7 @@ Strengthen the repository controls in place:
 ## Expected File Changes
 
 - `AGENTS.md`
-- `.opencode/opencode.json`
+- `.opencode/opencode.template.json`
 - `README.md`
 - `docs/coolstore-inventory-service-repository-plan.md`
 - `docs/tasks/continue-readme-api-test-plan-alignment.md`

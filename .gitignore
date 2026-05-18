@@ -7,3 +7,6 @@ target/
 .DS_Store
 .continue/*.local.yaml
 .continue/secrets.yaml
+.opencode/opencode.json
+.opencode/local.json
+.opencode/*.local.json

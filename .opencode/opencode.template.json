@@ -1,10 +1,9 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "instructions": [
-    "AGENTS.md"
-  ],
   "provider": {
     "nemotron": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "MaaS Nemotron",
       "models": {
         "nemotron-3-nano-30b-a3b": {
           "name": "NVIDIA Nemotron (Local GPU)",
@@ -17,6 +16,8 @@
       }
     },
     "gpt-oss": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "MaaS gpt-oss",
       "models": {
         "gpt-oss-20b": {
           "name": "OpenAI gpt-oss-20b (Local GPU)",
@@ -29,6 +30,8 @@
       }
     },
     "gpt-4o": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "MaaS GPT-4o",
       "models": {
         "gpt-4o": {
           "name": "OpenAI GPT-4o (External)",
@@ -41,6 +44,8 @@
       }
     },
     "gpt-4o-mini": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "MaaS GPT-4o Mini",
       "models": {
         "gpt-4o-mini": {
           "name": "OpenAI GPT-4o Mini (External)",

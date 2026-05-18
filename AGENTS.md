@@ -28,7 +28,7 @@ Important paths:
 - `gitops/` - app-local Kustomize desired state for the first dev deployment.
 - `docs/tasks/` - bounded Continue and OpenCode task packets.
 - `.continue/config.yaml` - Continue configuration template.
-- `.opencode/opencode.json` - OpenCode configuration template.
+- `.opencode/opencode.template.json` - OpenCode configuration template copied to `~/.config/opencode/opencode.json`.
 - `legacy/python-exercises/` - archived Python exercise material retained as legacy context.
 
 ## Service Contract

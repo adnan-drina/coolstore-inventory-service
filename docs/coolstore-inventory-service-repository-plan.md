@@ -20,7 +20,7 @@ What exists now:
 
 - OpenShift Dev Spaces `devfile.yaml`;
 - Continue configuration template in `.continue/config.yaml`;
-- OpenCode configuration template in `.opencode/opencode.json`;
+- OpenCode configuration template in `.opencode/opencode.template.json`;
 - archived Python starter exercises under `legacy/python-exercises/game_starters/`;
 - archived Python solution examples under `legacy/python-exercises/game_solutions/`.
 
@@ -137,7 +137,7 @@ The service should keep the first implementation bounded to inventory availabili
 ├── .tekton/
 │   └── pull-request.yaml
 ├── .opencode/
-│   └── opencode.json
+│   └── opencode.template.json
 └── .vscode/
     ├── config.yaml
     └── extensions.json
@@ -168,7 +168,7 @@ The existing Python exercise material is archived under `legacy/python-exercises
 - Expand `AGENTS.md` into repo-local project rules for the current Quarkus phase. Done in Item 3.
 - Require analysis-first Continue work with documentation and test-plan write boundaries. Done in Item 3.
 - Require plan-before-edit OpenCode work with explicit allowed source, test, and documentation paths. Done in Item 3.
-- Configure OpenCode to load `AGENTS.md` and ask before write-like or external-action tools. Done in Item 3.
+- Configure OpenCode with a local user config copied from `.opencode/opencode.template.json`; OpenCode loads repo-local `AGENTS.md` rules from the project root and asks before write-like or external-action tools. Done in Item 3.
 - Keep GitOps, Tekton, PostgreSQL, and legacy Python archive work out of the first OpenCode feature task. Done in Item 3.
 
 ### Iteration 3: Quarkus Service Scaffold
