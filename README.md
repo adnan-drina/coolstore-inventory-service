@@ -50,6 +50,8 @@ when a command must run.
 OpenCode uses `~/.config/opencode/opencode.json` for user/provider
 configuration. The project `.opencode/` directory is reserved for checked-in
 templates, agents, commands, and future project-local assets.
+The template includes the shared OpenShift MCP endpoint for cluster context;
+OpenCode must ask before using MCP, write, web, or shell tools.
 
 The current Dev Spaces OpenCode build can also read the older
 `~/.opencode/opencode.json` path. The workspace startup command keeps that path

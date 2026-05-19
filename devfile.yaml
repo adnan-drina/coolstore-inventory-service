@@ -35,11 +35,16 @@ commands:
         else
           echo "Kept existing ~/.config/opencode/opencode.json."
         fi
-        if [ ! -e ~/.opencode/opencode.json ]; then
+        if [ -f ~/.opencode/opencode.json ] && [ ! -f ~/.config/opencode/opencode.json ]; then
+          cp ~/.opencode/opencode.json ~/.config/opencode/opencode.json
+          echo "Migrated existing ~/.opencode/opencode.json to ~/.config/opencode/opencode.json."
+        fi
+        if [ ! -L ~/.opencode/opencode.json ]; then
+          rm -f ~/.opencode/opencode.json
           ln -s ~/.config/opencode/opencode.json ~/.opencode/opencode.json 2>/dev/null || cp ~/.config/opencode/opencode.json ~/.opencode/opencode.json
-          echo "Created compatibility ~/.opencode/opencode.json for the installed OpenCode build."
+          echo "Refreshed compatibility ~/.opencode/opencode.json for the installed OpenCode build."
         else
-          echo "Kept existing compatibility ~/.opencode/opencode.json."
+          echo "Kept compatibility ~/.opencode/opencode.json link."
         fi
         echo ""
         echo "=== AI Code Assistant Setup ==="
