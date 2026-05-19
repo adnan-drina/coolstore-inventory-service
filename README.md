@@ -37,10 +37,12 @@ The root [catalog-info.yaml](catalog-info.yaml) now identifies this repository a
 The canonical workspace setup guide is published from the platform repository through Developer Hub TechDocs. Use the Developer Hub `Getting Started` link for the step-by-step MaaS, Continue, and OpenCode setup flow.
 The committed Continue template is `.continue/config.yaml`. The committed
 OpenCode template is `.opencode/opencode.template.json`. The workspace startup
-command copies them once to `~/.continue/config.yaml` and
-`~/.config/opencode/opencode.json`, where the developer adds the real MaaS
-route and API key. Keep real values out of Git and do not edit the project
-templates with live credentials.
+command renders `~/.continue/config.yaml` and
+`~/.config/opencode/opencode.json`. In the standard demo path, the
+`ai-developer` workspace receives platform-provisioned MaaS API keys, so no
+manual token copy is required. The placeholder templates remain useful for
+learning, recovery, and non-preconfigured workspaces. Keep real values out of
+Git and do not edit the project templates with live credentials.
 
 The Continue template disables the built-in terminal command tool in Dev Spaces.
 Use Continue for chat, edits, README/API/test-plan alignment, and read-only
