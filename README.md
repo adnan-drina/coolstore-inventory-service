@@ -42,6 +42,11 @@ command copies them once to `~/.continue/config.yaml` and
 route and API key. Keep real values out of Git and do not edit the project
 templates with live credentials.
 
+The Continue template disables the built-in terminal command tool in Dev Spaces.
+Use Continue for chat, edits, README/API/test-plan alignment, and read-only
+OpenShift MCP context. Use OpenCode or a manually opened Dev Spaces terminal
+when a command must run.
+
 OpenCode uses `~/.config/opencode/opencode.json` for user/provider
 configuration. The project `.opencode/` directory is reserved for checked-in
 templates, agents, commands, and future project-local assets.
