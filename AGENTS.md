@@ -12,6 +12,23 @@ Treat this repository as the active Quarkus target-service repository:
 - keep the current Quarkus scaffold bounded to inventory read APIs until the reservation endpoint task starts;
 - do not commit secrets, model API keys, kubeconfigs, tokens, or private cluster credentials.
 
+## Skills
+
+Reusable skills under `.opencode/skills/` encode how this team builds this
+service. OpenCode discovers them automatically; other agents can read them
+directly. Consult the matching skill BEFORE writing code:
+
+| Skill | Use when |
+|-------|----------|
+| `quarkus-rest-endpoint` | Adding or changing any REST resource, path, or HTTP operation |
+| `inventory-domain-model` | Adding or changing records, repository methods, or seed data |
+| `project-test-standards` | Writing tests, or when a change lacks a covering test |
+| `api-docs-consistency` | Finishing any task that touches endpoints, record shapes, or seed data |
+
+Skills are living standards: when review feedback corrects agent output,
+fold the correction back into the relevant skill in the same pull request
+so the next run inherits it.
+
 ## Project Map
 
 Important paths:
