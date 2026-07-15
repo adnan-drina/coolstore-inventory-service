@@ -16,7 +16,8 @@ lookups by item.
 
 ## API
 
-Base path: `/api/inventory` — all responses are JSON.
+Base path: `/api/inventory` — all responses are JSON. The service root (`/`)
+serves a small HTML landing page linking to every endpoint.
 
 | Method | Path | Description |
 |---|---|---|

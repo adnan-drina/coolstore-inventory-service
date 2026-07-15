@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Coolstore Inventory Service</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: "Red Hat Text", -apple-system, "Segoe UI", Roboto, sans-serif;
+      max-width: 720px; margin: 4rem auto; padding: 0 1.5rem;
+      line-height: 1.6;
+    }
+    h1 { font-weight: 600; margin-bottom: 0.25rem; }
+    p.lead { margin-top: 0; opacity: 0.75; }
+    table { border-collapse: collapse; width: 100%; margin: 1.5rem 0; }
+    th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid rgba(128,128,128,0.35); }
+    th { font-weight: 600; }
+    code { font-family: "Red Hat Mono", ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.9em; }
+    a { color: #e00; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    footer { margin-top: 2.5rem; font-size: 0.85em; opacity: 0.6; }
+  </style>
+</head>
+<body>
+  <h1>Coolstore Inventory Service</h1>
+  <p class="lead">Product inventory for the Coolstore retail domain — stock levels
+  per store location and availability lookups by item.</p>
+
+  <table>
+    <tr><th>Endpoint</th><th>Description</th></tr>
+    <tr>
+      <td><a href="/api/inventory"><code>GET /api/inventory</code></a></td>
+      <td>List all inventory items</td>
+    </tr>
+    <tr>
+      <td><a href="/api/inventory/329299"><code>GET /api/inventory/{itemId}</code></a></td>
+      <td>One item by its <code>itemId</code></td>
+    </tr>
+    <tr>
+      <td><a href="/api/inventory/329299/availability"><code>GET /api/inventory/{itemId}/availability</code></a></td>
+      <td>Availability summary for an item</td>
+    </tr>
+    <tr>
+      <td><a href="/q/health"><code>GET /q/health</code></a></td>
+      <td>Health report (liveness and readiness)</td>
+    </tr>
+    <tr>
+      <td><a href="/q/metrics"><code>GET /q/metrics</code></a></td>
+      <td>Prometheus metrics</td>
+    </tr>
+  </table>
+
+  <footer>Powered by the Red Hat build of Quarkus</footer>
+</body>
+</html>
