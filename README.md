@@ -107,5 +107,4 @@ src/test/java/com/redhat/coolstore/inventory/   JUnit 5 / RestAssured tests
 src/main/resources/application.properties       runtime configuration
 Containerfile                                   container build
 devfile.yaml                                    cloud development workspace definition
-catalog-info.yaml                               software catalog registration
 ```
