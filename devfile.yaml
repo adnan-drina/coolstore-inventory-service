@@ -35,7 +35,7 @@ commands:
       label: "1. Package the application"
       component: tooling-container
       workingDir: ${PROJECT_SOURCE}
-      commandLine: "./mvnw package"
+      commandLine: 'export JAVA_HOME="${JAVA_HOME_21:-${JAVA_HOME}}" && export PATH="${JAVA_HOME}/bin:${PATH}" && ./mvnw package'
       group:
         kind: build
         isDefault: true
@@ -44,7 +44,7 @@ commands:
       label: "2. Start Development mode (Hot reload)"
       component: tooling-container
       workingDir: ${PROJECT_SOURCE}
-      commandLine: "./mvnw compile quarkus:dev -Dquarkus.analytics.disabled=true"
+      commandLine: 'export JAVA_HOME="${JAVA_HOME_21:-${JAVA_HOME}}" && export PATH="${JAVA_HOME}/bin:${PATH}" && ./mvnw compile quarkus:dev -Dquarkus.analytics.disabled=true'
       group:
         kind: run
         isDefault: true
