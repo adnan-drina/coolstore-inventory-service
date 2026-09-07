@@ -8,12 +8,13 @@ import java.util.Optional;
 
 @ApplicationScoped
 public class InventoryRepository {
+    private static final String DEFAULT_LINK = "http://redhat.com";
     private final Map<String, InventoryItem> inventory = new LinkedHashMap<>();
 
     public InventoryRepository() {
-        add(new InventoryItem(1L, "329299", "Raleigh", 35, "http://redhat.com"));
-        add(new InventoryItem(2L, "329199", "Raleigh", 12, "http://redhat.com"));
-        add(new InventoryItem(3L, "165613", "Boston", 0, "http://redhat.com"));
+        add(new InventoryItem(1L, "329299", "Raleigh", 35, DEFAULT_LINK));
+        add(new InventoryItem(2L, "329199", "Raleigh", 12, DEFAULT_LINK));
+        add(new InventoryItem(3L, "165613", "Boston", 0, DEFAULT_LINK));
     }
 
     public List<InventoryItem> list() {

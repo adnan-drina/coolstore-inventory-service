@@ -1,6 +1,5 @@
 package com.redhat.coolstore.inventory;
 
-import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.Path;
@@ -17,8 +16,11 @@ import org.jboss.logging.Logger;
 public class InventoryResource {
     private static final Logger LOG = Logger.getLogger(InventoryResource.class);
 
-    @Inject
-    InventoryRepository repository;
+    private final InventoryRepository repository;
+
+    public InventoryResource(InventoryRepository repository) {
+        this.repository = repository;
+    }
 
     @GET
     public List<InventoryItem> list() {
