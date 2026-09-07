@@ -60,4 +60,17 @@ class InventoryResourceTest {
                 .then()
                 .statusCode(404);
     }
+
+    @Test
+    void getInventoryStats() {
+        given()
+                .when().get("/api/inventory/stats")
+                .then()
+                .statusCode(200)
+                .body("totalCount", is(3))
+                .body("inStock", is(2))
+                .body("outOfStock", is(1))
+                .body("byLocation.Raleigh", is(2))
+                .body("byLocation.Boston", is(1));
+    }
 }
